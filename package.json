@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "pathflow-lukowa-minimal",
   "version": "1.0.0",
   "description": "Minimal applicant form using Node, Express, EJS and PostgreSQL",
@@ -8,7 +8,7 @@
     "init-db": "node init_db.js"
   },
   "dependencies": {
-    "dotenv": "^16.4.5",
+    "dotenv": "^16.6.1",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "pg": "^8.11.0"
