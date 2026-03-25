@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Candidate Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background: #f7f7f7; }
+    .card { max-width: 700px; margin: 0 auto; background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,.08); }
+    h1 { margin-top: 0; }
+    label { display: block; margin: 14px 0 6px; font-weight: 600; }
+    input, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; }
+    textarea { min-height: 120px; resize: vertical; }
+    button { margin-top: 18px; padding: 12px 18px; border: 0; border-radius: 8px; cursor: pointer; }
+    .error { background: #ffe5e5; color: #8a1f1f; padding: 10px 12px; border-radius: 8px; margin-bottom: 12px; }
+    .links { margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Candidate Input Form</h1>
+    <p>Fill in the details below. The form saves directly into PostgreSQL.</p>
+
+    <% if (error) { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+
+    <form method="POST" action="/submit">
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" value="<%= values.name %>" required />
+
+      <label for="age">Age</label>
+      <input id="age" name="age" type="number" min="0" step="1" value="<%= values.age %>" required />
+
+      <label for="position">Position</label>
+      <input id="position" name="position" type="text" value="<%= values.position %>" required />
+
+      <label for="experience_level">Experience level</label>
+      <input
+        id="experience_level"
+        name="experience_level"
+        type="text"
+        placeholder="Junior, Mid, Senior..."
+        value="<%= values.experience_level %>"
+        required
+      />
+
+      <label for="notes">Notes</label>
+      <textarea id="notes" name="notes"><%= values.notes %></textarea>
+
+      <button type="submit">Save candidate</button>
+    </form>
+
+    <div class="links">
+      <a href="/records">View saved records</a>
+    </div>
+  </div>
+</body>
+</html>

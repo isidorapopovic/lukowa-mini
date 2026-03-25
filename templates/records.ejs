@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saved Records</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background: #f7f7f7; }
+    .card { max-width: 1000px; margin: 0 auto; background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,.08); }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 10px; border-bottom: 1px solid #e5e5e5; vertical-align: top; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Saved Records</h1>
+    <p><a href="/">Back to form</a></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Position</th>
+          <th>Experience level</th>
+          <th>Notes</th>
+          <th>Created</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (!rows.length) { %>
+          <tr>
+            <td colspan="7">No records yet.</td>
+          </tr>
+        <% } %>
+
+        <% rows.forEach((row) => { %>
+          <tr>
+            <td><%= row.id %></td>
+            <td><%= row.name %></td>
+            <td><%= row.age %></td>
+            <td><%= row.position %></td>
+            <td><%= row.experience_level %></td>
+            <td><%= row.notes || '' %></td>
+            <td><%= new Date(row.created_at).toLocaleString() %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
